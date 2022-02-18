@@ -71,9 +71,9 @@ func NewRootCommand() *cobra.Command {
 	}
 
 	rootCmd.AddCommand(newAdditionCmd())
-	rootCmd.AddCommand(newDivideCmd())
-	rootCmd.AddCommand(newMinusCmd())
-	rootCmd.AddCommand(newMultiplyCmd())
+	rootCmd.AddCommand(newDivisionCmd())
+	rootCmd.AddCommand(newSubtractionCmd())
+	rootCmd.AddCommand(newMultiplicationCmd())
 
 	return rootCmd
 }

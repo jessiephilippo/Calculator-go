@@ -11,25 +11,24 @@ import (
 	"github.com/spf13/cobra"
 )
 
-func newAdditionCmd() *cobra.Command {
-	additionCmd := &cobra.Command{
-		Use:   "addition",
-		Short: "addition your calculation",
+func newSubtractionCmd() *cobra.Command {
+	subtractionCmd := &cobra.Command{
+		Use:   "subtraction",
+		Short: "subtract your calculation",
 		Run: func(cmd *cobra.Command, args []string) {
 			fstatus, _ := cmd.Flags().GetBool("float")
-			if fstatus { // if status is true, call addFloat
-				addFloat(args)
+			if fstatus { // if status is true, call subtractFloat
+				subtractFloat(args)
 			} else {
-				addInt(args)
+				subtractInt(args)
 			}
 		},
 	}
 
-	additionCmd.Flags().BoolP("float", "f", false, "Add floating numbers")
-	return additionCmd
+	return subtractionCmd
 }
 
-func addFloat(args []string) {
+func subtractFloat(args []string) {
 	var sum float64
 
 	for _, fval := range args {
@@ -44,7 +43,7 @@ func addFloat(args []string) {
 	fmt.Printf("Sum of floating numbers %s is %.2f\n", args, sum)
 }
 
-func addInt(args []string) {
+func subtractInt(args []string) {
 	var sum int
 
 	for _, ival := range args {

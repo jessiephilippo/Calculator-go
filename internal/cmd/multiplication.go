@@ -11,25 +11,25 @@ import (
 	"github.com/spf13/cobra"
 )
 
-func newAdditionCmd() *cobra.Command {
-	additionCmd := &cobra.Command{
-		Use:   "addition",
-		Short: "addition your calculation",
+func newMultiplicationCmd() *cobra.Command {
+	multiplicationCmd := &cobra.Command{
+		Use:   "multiplication",
+		Short: "multiply your calculation",
 		Run: func(cmd *cobra.Command, args []string) {
 			fstatus, _ := cmd.Flags().GetBool("float")
-			if fstatus { // if status is true, call addFloat
-				addFloat(args)
+			if fstatus { // if status is true, call multiplyFloat
+				multiplyFloat(args)
 			} else {
-				addInt(args)
+				multiplyInt(args)
 			}
 		},
 	}
 
-	additionCmd.Flags().BoolP("float", "f", false, "Add floating numbers")
-	return additionCmd
+	multiplicationCmd.Flags().BoolP("float", "f", false, "Add floating numbers")
+	return multiplicationCmd
 }
 
-func addFloat(args []string) {
+func multiplyFloat(args []string) {
 	var sum float64
 
 	for _, fval := range args {
@@ -38,13 +38,13 @@ func addFloat(args []string) {
 			fmt.Println(err)
 		}
 
-		sum = sum + ftemp
+		sum = sum * ftemp
 	}
 
 	fmt.Printf("Sum of floating numbers %s is %.2f\n", args, sum)
 }
 
-func addInt(args []string) {
+func multiplyInt(args []string) {
 	var sum int
 
 	for _, ival := range args {
@@ -54,7 +54,7 @@ func addInt(args []string) {
 			fmt.Println(err)
 		}
 
-		sum = sum + itemp
+		sum = sum * itemp
 	}
 
 	fmt.Printf("Addition of numbers %s is %d\n", args, sum)
